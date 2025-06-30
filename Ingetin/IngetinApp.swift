@@ -9,11 +9,11 @@ import SwiftUI
 
 @main
 struct IngetinApp: App {
-    let persistenceController = PersistenceController.shared
+    let persistenceController = PersistenceController()
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            Color.clear
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
