@@ -41,6 +41,14 @@ struct ReminderListView: View {
                             actionTitle: "Add Reminder",
                             action: coordinator.showAddReminder
                         )
+                    case .emptyFilter:
+                        EmptyStateView(
+                            icon: "bell.slash",
+                            title: "No Reminders Found",
+                            subtitle: "Try to change your search query, or create a new one",
+                            actionTitle: "Add Reminder",
+                            action: coordinator.showAddReminder
+                        )
                     case .loaded:
                         remindersList
                     }

@@ -70,6 +70,10 @@ final class ReminderListViewModel: ObservableObject {
             do {
                 let reminders = try await getRemindersUseCase.executeActive()
                 activeReminders = reminders
+                if (activeReminders.isEmpty) {
+                    state = .empty
+                    return
+                }
                 state = .loaded
             } catch {
                 self.error = error as? ReminderError ?? .saveFailed
@@ -80,7 +84,12 @@ final class ReminderListViewModel: ObservableObject {
     private func applyFiltersAndSort(reminders: [Reminder], searchText: String, sortOrder: SortOrder) {
         let filtered = searchText.isEmpty ? reminders :
             reminders.filter { $0.name.localizedCaseInsensitiveContains(searchText) }
+        if filtered.isEmpty {
+            state = .emptyFilter
+            return
+        }
         
+        state = .loaded
         let sorted = filtered.sorted { lhs, rhs in
             switch sortOrder {
             case .time:

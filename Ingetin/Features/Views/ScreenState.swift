@@ -11,5 +11,6 @@ enum ScreenState {
     case initial
     case loading
     case empty
+    case emptyFilter
     case loaded
 }

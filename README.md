@@ -6,7 +6,7 @@ A simple app to Remind your daily task.
 - You can add a new Reminder, set it's name and the time 
 - Get Local Notification 10 minutes before the set time
 - List of current active and completed reminders
-- 
+- Filter based on Reminder's name, and sort by Time, Name or Created date
 
 ## Compilation
 this project is compiled using Xcode 16.2 with iOS 16 as minimum target
