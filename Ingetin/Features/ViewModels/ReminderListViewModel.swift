@@ -82,6 +82,9 @@ final class ReminderListViewModel: ObservableObject {
     }
     
     private func applyFiltersAndSort(reminders: [Reminder], searchText: String, sortOrder: SortOrder) {
+        guard !activeReminders.isEmpty else {
+            return
+        }
         let filtered = searchText.isEmpty ? reminders :
             reminders.filter { $0.name.localizedCaseInsensitiveContains(searchText) }
         if filtered.isEmpty {
